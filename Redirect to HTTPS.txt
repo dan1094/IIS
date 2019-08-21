@@ -1,0 +1,13 @@
+  <system.webServer>
+	<rewrite>
+      <rules>
+        <rule name="HTTPS_web" stopProcessing="true">
+          <match url="(.*)" />
+          <conditions logicalGrouping="MatchAny">
+            <add input="{HTTPS}" pattern="^OFF$" />
+          </conditions>
+          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
